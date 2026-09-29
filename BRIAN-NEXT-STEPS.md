@@ -30,3 +30,10 @@ Emails stay held until their own card is tapped (golden rule — irreversible).
 - 4 dials placed today (test batch, outcomes in dial_log)
 - KB ingest ~300/445 transcripts (finishes tonight)
 - YouTube monitor + hourly ingest = self-sustaining KB
+
+
+## 6. UPDATE (9/29 late) — video testimonial + traffic promise (owner-directed, LIVE)
+- **Don Taylor video testimonial** now plays on bilts.org (24MB, real ESVA interview, poster + case-study link). Replaces the founder-quote card your screenshot flagged.
+- **The Bilts Traffic Promise**: +30% website traffic in 90 days, measured on the customer's own Search Console/GA4 baseline, or that month is FREE and stays free every month until hit. Contingencies on the customer: (1) provide recordings -> we produce their monthly podcast/YouTube episode, (2) run the review ask to their completed customers. Offer cards + full fine print on page (traffic guarantee, not revenue).
+- **Number rationale**: 30% is the aggressive-but-consistently-hittable target given Map Pack + weekly pages + reviews + YouTube compounding on typical un-optimized trade sites.
+- **Follow-up (contract)**: when the first promise-plan deal closes, the T2 agreement needs the traffic-guarantee clause + the two customer contingencies written in (template update, not blocking launch).
