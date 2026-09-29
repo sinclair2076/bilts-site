@@ -246,9 +246,9 @@ footer a{color:var(--gold-bright);text-decoration:none}
         <li><b>Managed Operation</b> — monitoring, adjustments, and a plain-English monthly report (calls answered, texts sent, jobs booked, rank movement, reviews gained).</li>
       </ol>
       <h4>2. What we need from the Client</h4>
-      <ul><li>Call forwarding activation on the business line (Bilts walks the Client through it), calendar rules, the escalation contact, and a list of services/pricing the AI may quote. Bilts never quotes a price the Client hasn't approved in writing.</li></ul>
-      <h4>3. Term</h4>
-      <ul><li>Month-to-month after the Start period. The Start fee covers the full install plus months 1–2 of managed service.</li></ul>
+      <ul><li>Call forwarding activation on the business line (Bilts walks the Client through it), calendar rules, the escalation contact, and a list of services/pricing the AI may quote. All pricing the AI quotes to your customers is confirmed in writing with you before any charge is incurred. Bilts never quotes a price the Client hasn't approved in writing.</li></ul>
+      <h4>3. Term &amp; renewal</h4>
+      <ul><li>Month-to-month after the Start period. The Start fee covers the full install plus months 1–2 of managed service. <b>Your subscription automatically renews each month unless cancelled at least 7 days before the renewal date.</b> By signing, you authorize recurring monthly billing of the Managed Monthly fee beginning month 3, until cancelled.</li></ul>
       <h4>4. Fees — locked-for-life rate</h4>
       <table style="width:100%;border-collapse:collapse;margin:6px 0">
         <tr><td style="border:1px solid #e2e8f0;padding:6px 10px">Start — full install + months 1–2</td><td style="border:1px solid #e2e8f0;padding:6px 10px">$994 one time (paid)</td></tr>
@@ -256,13 +256,20 @@ footer a{color:var(--gold-bright);text-decoration:none}
       </table>
       <p>This agreement was signed under Bilts's locked-for-life rate. These fees never increase for the life of this agreement; published rate increases never apply to this customer.</p>
       <h4>5. Payment &amp; cancellation</h4>
-      <p>Payments are processed by Stripe; card details never reach Bilts staff. The Managed Monthly may be cancelled by either party with 30 days' written notice, no penalty. On cancellation Bilts stops managing the system and returns forwarding to the Client's full control; the Client keeps its Google profile and review history.</p>
+      <p>Payments are processed by Stripe; card details never reach Bilts staff. The Managed Monthly may be cancelled by either party with 30 days' written notice (email to support@bilts.org is sufficient), no penalty. <b>3-day right to cancel:</b> you may cancel this agreement for any reason within 3 calendar days of signing by written notice, for a full refund of all amounts paid. On cancellation Bilts stops managing the system and returns forwarding to the Client's full control; the Client keeps its Google profile and review history.</p>
       <h4>6. Guarantee</h4>
-      <p>If, within 7 days of go-live, the system fails to perform its core functions (answers calls, sends the text-back, captures and delivers a booking) and Bilts cannot demonstrate a working flow within 3 business days of the Client's notice, the Client may cancel and the Start fee is refunded in full. The guarantee covers the documented functioning of the system itself — not outcomes (revenue, job volume, traffic).</p>
-      <h4>7. Liability &amp; governing law</h4>
-      <p>Bilts's total liability is limited to fees paid in the 60 days before a claim. Neither party is liable for indirect damages. Governed by the laws of the State of Wyoming; disputes handled in Sheridan County, Wyoming. The +30% traffic promise, where purchased, is administered per its page terms (measured on the Client's own verified analytics, 90-day rolling window).</p>
+      <p><b>7-day function guarantee:</b> if the service does not operate as described within the first 7 calendar days after go-live — answering calls, sending the missed-call text-back, and capturing and delivering a booking — you may request a full refund of the Start fee by written notice (email) to support@bilts.org. Bilts may demonstrate the working flow to resolve the claim within 3 business days of your notice before refunding.</p>
+      <p><b>Traffic promise (managed plans):</b> if, after 90 days, the Client's verified website traffic has increased by less than 30% — as measured by the Client's own Google Search Console or GA4, with the Client having provided Bilts access for verification — the Client receives one month of Managed Monthly service free, and each subsequent month free until the target is met. The guarantee covers the traffic target only; it is not a promise of revenue or job volume.</p>
+      <h4>7. Calls, recording &amp; AI disclosure</h4>
+      <p>Callers to the AI front desk hear a disclosure at the start of the call that the assistant is an AI and that the call may be recorded; continued participation constitutes consent, and the disclosure is calibrated to satisfy two-party-consent states. Call recordings and transcripts are retained only as long as needed to operate the service and are never sold.</p>
+      <h4>8. Data protection</h4>
+      <p>Bilts processes lead and caller data (names, numbers, call outcomes) solely to deliver the service. The Data Processing Addendum at <a href="https://vesmg.com/terms" style="color:#065f46">vesmg.com/terms</a> forms part of this agreement. Lead data is retained for the life of the agreement plus 90 days, then deleted on request.</p>
+      <h4>9. Liability &amp; governing law</h4>
+      <p>Bilts's total liability is limited to the total fees paid by the Client in the twelve months before a claim. Neither party is liable for indirect or consequential damages. Governed by the laws of the State of Wyoming; disputes handled in Sheridan County, Wyoming.</p>
+      <h4>10. Electronic signature</h4>
+      <p>By signing below, you consent to the use of electronic signatures for this agreement and acknowledge that the fully executed agreement will be stored electronically and emailed to you in full. This agreement is signed under the federal E-SIGN Act and applicable state UETA laws.</p>
     </div>
-    <label class="agree-check"><input type="checkbox" id="agree-check"> I have read the agreement above and agree to its terms on behalf of my business.</label>
+    <label class="agree-check"><input type="checkbox" id="agree-check"> I have read the agreement above, consent to electronic signature and electronic delivery, and agree to its terms — including automatic monthly renewal — on behalf of my business.</label>
     <form id="sign-form" class="wform" novalidate>
       <div class="sig-grid">
         <div><label for="s-name">Full legal name</label><input id="s-name" type="text" required></div>
@@ -434,7 +441,9 @@ footer a{color:var(--gold-bright);text-decoration:none}
     var msg = [
       'SERVICE AGREEMENT SIGNED via bilts.org post-payment onboarding.',
       'Agreement: Bilts / VES AMG Service Agreement (Never Miss a Job) \u2014 $994 start + $497/mo from month 3, fees locked for life of agreement.',
-      'E-signature consent: signer consented to electronic signature and electronic delivery of the executed agreement.',
+      'E-SIGN consent: signer consented to electronic signature and electronic delivery of the executed agreement (agreement section 10).',
+      'Auto-renewal consent: signer authorized recurring monthly billing of $497/mo beginning month 3, cancellable with 30 days notice (section 3).',
+      'Signer acknowledged the 7-day function guarantee, the 90-day traffic promise terms, and the 3-day right to cancel (sections 5-6).',
       'Signed by: ' + sName + ' (' + document.getElementById('s-title').value.trim() + '), ' + sBiz,
       'Signature (typed): ' + s,
       'Signed at (UTC): ' + new Date().toISOString(),
