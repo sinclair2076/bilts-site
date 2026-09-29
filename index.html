@@ -3,340 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VES — Your Local Business, AI-Powered | Free Digital Presence Report</title>
-<meta name="description" content="We put an AI front desk and marketing engine on local service businesses. Watch the 90-second demo, get your free instant report — website, AI standing, and compliance — then decide.">
-<!-- bilts.org — WES-YOUTUBE-PLAYBOOK funnel (ADR-0017, ves-cto approved):
-     video-led, ONE conversion (free report), ladder report -> quote -> pay -> sign -> onboard.
-     Report+quote email: server-side via vesmg.com/api/revenue-scan (source=bilts).
-     Payment: verified Stripe link, redirects back to ?welcome=1 for agreement + onboarding. -->
+<title>Bilts — Never Miss a Call. Rank First. Get Found by AI. | For Local Service Businesses</title>
+<meta name="description" content="24/7 AI front desk, Google Map Pack ranking, and AI-search visibility for local service businesses. Free 15-minute presence audit — keep the findings either way.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Bilts — Local Business Growth Systems",
+"url":"https://bilts.org","telephone":"+1-307-344-4410","areaServed":"US",
+"address":{"@type":"PostalAddress","addressLocality":"Delmar","addressRegion":"MD","addressCountry":"US"},
+"founder":{"@type":"Person","name":"Brian Sinclair"},
+"makesOffer":[
+ {"@type":"Offer","name":"Local Visibility Audit","price":"499","priceCurrency":"USD"},
+ {"@type":"Offer","name":"Front Desk Start (install + 2 months)","price":"994","priceCurrency":"USD"},
+ {"@type":"Offer","name":"Front Desk Managed (monthly, from month 3)","price":"497","priceCurrency":"USD"},
+ {"@type":"Offer","name":"Full Growth Stack (install + 2 months)","price":"1494","priceCurrency":"USD"},
+ {"@type":"Offer","name":"Full Growth Stack (monthly, from month 3)","price":"994","priceCurrency":"USD"}]}
+</script>
 <style>
-  :root{
-    --navy-deep:#091422; --navy-panel:#0f1f33; --navy-mid:#1e3a5f;
-    --gold:#c9a961; --gold-bright:#e0bc7f; --gold-hover:#a68446;
-    --text:#ffffff; --text-soft:#9dbcd8; --cream:#fdf9f0;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--navy-deep);color:var(--text);line-height:1.6}
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
-  header{padding:56px 0 32px;text-align:center}
-  .flag{font-size:13px;letter-spacing:3px;color:var(--text-soft);text-transform:uppercase}
-  h1{font-size:clamp(30px,5.4vw,52px);line-height:1.12;margin:18px 0 16px;font-weight:800}
-  h1 .gold{color:var(--gold-bright)}
-  .sub{font-size:clamp(16px,2.4vw,20px);color:var(--text-soft);max-width:640px;margin:0 auto 28px}
-  /* THE VIDEO — proof first; nothing autoplays, nothing preloads */
-  .video-box{max-width:640px;margin:0 auto 8px;background:var(--navy-panel);border:1px solid rgba(201,169,97,.35);border-radius:14px;padding:12px}
-  .video-box video{width:100%;border-radius:8px;display:block;background:#000}
-  .video-cap{font-size:12.5px;color:var(--text-soft);margin:10px 0 0}
-  /* THE ONE CTA — a single conversion on this page: the free report */
-  .cta-box{background:linear-gradient(135deg,var(--navy-panel),var(--navy-mid));border:1px solid rgba(201,169,97,.45);border-radius:16px;padding:36px 28px;max-width:620px;margin:32px auto 0;box-shadow:0 12px 40px rgba(0,0,0,.45)}
-  .cta-box h2{font-size:clamp(20px,3vw,25px);margin-bottom:8px}
-  .cta-box p.lead{color:var(--text-soft);margin-bottom:20px;font-size:15px}
-  form{display:grid;gap:12px;text-align:left}
-  input{width:100%;background:#0b1a2c;border:1px solid rgba(157,188,216,.35);border-radius:10px;color:var(--text);padding:13px 14px;font-size:15px;font-family:inherit}
-  input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
-  label{font-size:12.5px;color:var(--text-soft);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
-  .btn{display:block;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#1a1408;font-size:19px;font-weight:800;text-decoration:none;padding:17px 32px;border-radius:12px;transition:.18s;letter-spacing:.3px;border:none;cursor:pointer;width:100%;font-family:inherit}
-  button.btn:hover{filter:brightness(1.08)}
-  .btn-sub{font-size:13px;color:var(--text-soft);margin-top:14px}
-  .btn-sub a{color:var(--gold-bright)}
-  .form-msg{font-size:14px;margin-top:12px;display:none}
-  .form-msg.err{color:#ff9d9d;display:block}
-  /* INSTANT REPORT */
-  #report{display:none;max-width:640px;margin:36px auto 0;background:var(--navy-panel);border:1px solid rgba(201,169,97,.4);border-radius:14px;padding:26px;text-align:left}
-  #report h3{color:var(--gold-bright);font-size:20px;margin-bottom:6px}
-  .score-line{font-size:15px;margin-bottom:14px}
-  .score-line b{font-size:26px;color:var(--gold-bright)}
-  .check{padding:9px 0;border-bottom:1px solid rgba(157,188,216,.15);font-size:13.5px}
-  .check span.st{margin-right:8px}
-  .check .leak{float:right;color:var(--gold-bright);font-weight:700}
-  .rpt-note{font-size:12px;color:var(--text-soft);margin-top:12px}
-  .rpt-cta{margin-top:16px;font-size:14px;background:rgba(201,169,97,.12);border:1px solid rgba(201,169,97,.4);border-radius:10px;padding:14px}
-  /* PROOF */
-  .proof{padding:48px 0 8px;text-align:center}
-  .stats{display:flex;gap:24px;justify-content:center;margin:0 0 28px;flex-wrap:wrap}
-  .stat b{display:block;font-size:clamp(26px,4.4vw,40px);color:var(--gold-bright)}
-  .stat span{font-size:12.5px;color:var(--text-soft);text-transform:uppercase;letter-spacing:1.5px}
-  .proof .card{background:var(--navy-panel);border:1px solid rgba(157,188,216,.18);border-radius:14px;padding:28px;max-width:620px;margin:0 auto;text-align:left}
-  .quote{font-size:16.5px;font-style:italic;color:var(--cream)}
-  .who{margin-top:14px;font-size:14px;color:var(--gold-bright);font-weight:700}
-  .who span{display:block;color:var(--text-soft);font-weight:400;font-size:13px}
-  /* THE MODEL */
-  .model{padding:40px 0 48px}
-  .model h3{text-align:center;font-size:22px;margin-bottom:22px}
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:820px;margin:0 auto}
-  .step{background:var(--navy-panel);border:1px solid rgba(157,188,216,.14);border-radius:12px;padding:20px}
-  .step b{color:var(--gold-bright);display:block;margin-bottom:6px;font-size:15px}
-  .step p{font-size:13.5px;color:var(--text-soft)}
-  footer{padding:32px 0 44px;text-align:center;font-size:12.5px;color:var(--text-soft);border-top:1px solid rgba(157,188,216,.12)}
-  footer a{color:var(--gold-bright);text-decoration:none}
-  /* WELCOME (post-payment) */
-  #welcome{display:none;max-width:680px;margin:44px auto;background:var(--navy-panel);border:1px solid rgba(201,169,97,.5);border-radius:16px;padding:30px 28px;text-align:left}
-  #welcome h2{color:var(--gold-bright);font-size:clamp(21px,3vw,27px);margin-bottom:6px}
-  #welcome .wsub{color:var(--text-soft);font-size:14.5px;margin-bottom:18px}
-  .agreement{background:var(--cream);color:#1c1917;border-radius:10px;padding:16px;max-height:260px;overflow-y:auto;font-size:12.8px;line-height:1.5;margin-bottom:14px}
-  .agreement h4{font-size:13px;margin:10px 0 4px;color:#091422;text-transform:uppercase;letter-spacing:.5px}
-  .agreement p,.agreement li{margin:4px 0}
-  .agreement ol,.agreement ul{padding-left:20px}
-  .agree-check{font-size:13.5px;margin-bottom:14px;display:flex;gap:8px;align-items:flex-start}
-  .agree-check input{width:auto;margin-top:3px}
-  .sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
-  .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
-  .wbtn{margin-top:16px}
-  .wsuccess{display:none;background:rgba(4,120,87,.18);border:1px solid #34d399;border-radius:10px;padding:16px;margin-top:14px;font-size:14.5px}
-  @media(max-width:560px){.cta-box{padding:30px 18px}.sig-grid,.details-grid{grid-template-columns:1fr}}
+:root{--navy-deep:#091422;--navy-panel:#0f1f33;--navy-mid:#1e3a5f;--gold:#c9a961;--gold-bright:#e0bc7f;--text:#fff;--text-soft:#9dbcd8;--cream:#fdf9f0;--green:#39d98a}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--navy-deep);color:var(--text);line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}section{padding:52px 0}
+h2{font-size:clamp(24px,4vw,36px);text-align:center;margin-bottom:8px}
+.kicker{text-align:center;color:var(--gold-bright);text-transform:uppercase;letter-spacing:3px;font-size:12.5px;margin-bottom:10px}
+.sub{text-align:center;color:var(--text-soft);max-width:660px;margin:0 auto 30px;font-size:16px}
+header{padding:52px 0 36px;text-align:center}
+.flag{font-size:13px;letter-spacing:3px;color:var(--text-soft);text-transform:uppercase}
+h1{font-size:clamp(29px,5vw,48px);line-height:1.12;margin:16px 0 12px;font-weight:800}
+h1 .gold{color:var(--gold-bright)}
+.hero-sub{font-size:clamp(16px,2.2vw,19px);color:var(--text-soft);max-width:680px;margin:0 auto 24px}
+.hero-video{max-width:740px;margin:0 auto 26px;border-radius:14px;overflow:hidden;border:1px solid rgba(201,169,97,.4);box-shadow:0 14px 44px rgba(0,0,0,.5)}
+.hero-video video{width:100%;display:block;background:#000}
+.video-cap{font-size:12.5px;color:var(--text-soft);margin:8px 0 0}
+.cta-box{background:linear-gradient(135deg,var(--navy-panel),var(--navy-mid));border:1px solid rgba(201,169,97,.45);border-radius:16px;padding:32px 28px;max-width:660px;margin:0 auto;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.cta-box h2{font-size:clamp(19px,2.8vw,24px);margin-bottom:8px}
+.cta-box p{color:var(--text-soft);margin-bottom:20px;font-size:14.5px}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#1a1408;font-size:19px;font-weight:800;text-decoration:none;padding:16px 30px;border-radius:12px;transition:.18s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-sub{font-size:13px;color:var(--text-soft);margin-top:12px}.btn-sub a{color:var(--gold-bright)}
+.pain{background:var(--navy-panel)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:880px;margin:0 auto}
+.pain-card{border:1px solid rgba(178,34,52,.35);background:rgba(178,34,52,.08);border-radius:12px;padding:16px}
+.pain-card b{display:block;color:#ff9d9d;margin-bottom:6px;font-size:15px}
+.pain-card p{font-size:13.5px;color:var(--text-soft)}
+.pain-note{text-align:center;color:var(--text-soft);font-size:13.5px;margin-top:16px}.pain-note b{color:var(--cream)}
+.fix-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;max-width:920px;margin:0 auto}
+.fix{background:var(--navy-panel);border:1px solid rgba(157,188,216,.16);border-radius:12px;padding:18px;text-align:left}
+.fix .num{color:var(--gold-bright);font-weight:800;font-size:12.5px;letter-spacing:2px}
+.fix b{display:block;margin:5px 0;font-size:16px}
+.fix p{font-size:13.5px;color:var(--text-soft)}
+.stats{display:flex;gap:26px;justify-content:center;margin-bottom:26px;flex-wrap:wrap}
+.stat b{display:block;font-size:clamp(26px,4vw,36px);color:var(--gold-bright)}
+.stat span{font-size:11.5px;color:var(--text-soft);text-transform:uppercase;letter-spacing:1.5px}
+.quote-card{background:var(--navy-panel);border:1px solid rgba(157,188,216,.18);border-radius:14px;padding:26px;max-width:660px;margin:0 auto;text-align:left}
+.quote{font-style:italic;color:var(--cream);font-size:16px}
+.who{margin-top:12px;font-size:14px;color:var(--gold-bright);font-weight:700}
+.who span{display:block;color:var(--text-soft);font-weight:400;font-size:13px}
+.machine{background:var(--navy-panel)}
+.machine-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:880px;margin:0 auto}
+@media(max-width:700px){.machine-grid{grid-template-columns:1fr}}
+.m-card{background:var(--navy-deep);border:1px solid rgba(157,188,216,.14);border-radius:12px;padding:18px}
+.m-card b{color:var(--gold-bright);display:block;margin-bottom:6px;font-size:15px}
+.m-card p{font-size:13.5px;color:var(--text-soft)}
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;max-width:940px;margin:0 auto}
+.offer{background:var(--navy-panel);border:1px solid rgba(157,188,216,.16);border-radius:14px;padding:24px 20px;position:relative;display:flex;flex-direction:column}
+.offer.featured{border-color:var(--gold);box-shadow:0 0 30px rgba(201,169,97,.18)}
+.badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1408;font-size:10.5px;font-weight:800;padding:3px 12px;border-radius:20px;letter-spacing:1px;white-space:nowrap}
+.offer h3{font-size:16.5px;margin-bottom:2px}
+.offer .price{font-size:clamp(26px,3.2vw,32px);color:var(--gold-bright);font-weight:800;margin:6px 0 0}
+.offer .per{font-size:12px;color:var(--text-soft);margin-bottom:12px}
+.offer ul{list-style:none;margin-bottom:16px;flex:1}
+.offer li{font-size:13px;color:var(--text-soft);padding:3.5px 0 3.5px 19px;position:relative}
+.offer li:before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:700}
+.offer .btn{font-size:15px;padding:11px 16px;text-align:center;display:block}
+.audit{max-width:660px;margin:0 auto;background:var(--navy-panel);border:1px dashed rgba(201,169,97,.5);border-radius:14px;padding:26px;text-align:center}
+.audit ul{list-style:none;text-align:left;max-width:440px;margin:12px auto 20px}
+.audit li{font-size:14px;color:var(--text-soft);padding:4px 0 4px 22px;position:relative}
+.audit li:before{content:"\2192";position:absolute;left:0;color:var(--gold-bright)}
+footer{padding:28px 0 40px;text-align:center;font-size:12.5px;color:var(--text-soft);border-top:1px solid rgba(157,188,216,.12)}
+footer a{color:var(--gold-bright);text-decoration:none}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <div class="flag">Serving Those Who Served · Delmar, Maryland</div>
-    <h1>Your Business Should Answer <span class="gold">Every Call.</span><br>Now It Can — Without Hiring Anyone.</h1>
-    <p class="sub">We install an AI front desk and marketing engine on local service businesses — plumbers, roofers, HVAC, pest control, senior care. It answers the phone, books the job, and keeps your name in front of the neighborhood.</p>
-
-    <div class="video-box">
-      <video controls preload="none" poster="https://vesmg.com/catalog/front-desk-start-poster.jpg">
-        <source src="https://vesmg.com/catalog/front-desk-start-explainer.mp4" type="video/mp4">
-        Your browser doesn't support embedded video. <a href="https://vesmg.com/catalog/front-desk-start-explainer.mp4">Watch it here</a>.
+    <div class="flag">Bilts &middot; For Local Service Businesses &middot; Nationwide</div>
+    <h1>Every Missed Call Is a Job<br><span class="gold">Your Competitor Just Booked.</span></h1>
+    <p class="hero-sub">Bilts puts a 24/7 AI front desk on your business, fixes your Google Business Profile so you rank in the Map Pack, and gets you named when customers ask AI for &ldquo;the best [your trade] near me.&rdquo; You do the work &mdash; we fill the schedule.</p>
+    <div class="hero-video">
+      <video controls preload="none" poster="media/front-desk-monthly-poster.jpg">
+        <source src="media/front-desk-monthly-explainer.mp4" type="video/mp4">
+        Your browser can't play embedded video. <a href="media/front-desk-monthly-explainer.mp4">Watch it here</a>.
       </video>
-      <p class="video-cap">▶ 90 seconds — what we install, and what it does on day one.</p>
+      <p class="video-cap">&#9654; 90 seconds &mdash; the system, and what it does on day one.</p>
     </div>
-
-    <div class="cta-box" id="get-report">
-      <h2>Find out what your business is leaving on the table</h2>
-      <p class="lead">Enter your details and get an instant report: how your website captures (or loses) customers, where you stand in AI search, and a compliance once-over — plus what fixing it costs. Free, no obligation.</p>
-      <form id="scan-form" novalidate>
-        <div><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
-        <div><label for="f-business">Business name</label><input id="f-business" name="business" type="text" autocomplete="organization" required></div>
-        <div><label for="f-url">Website</label><input id="f-url" name="url" type="text" inputmode="url" placeholder="yourbusiness.com" required></div>
-        <div><label for="f-email">Email — your report is sent here instantly</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        <button class="btn" type="submit" id="scan-btn">Get My Free Report →</button>
-      </form>
-      <div class="form-msg" id="scan-msg"></div>
-      <div class="btn-sub">Prefer to talk first? Call <a href="tel:+13073444410">307-344-4410</a></div>
-    </div>
-
-    <div id="report">
-      <h3>Your instant report — <span id="r-url"></span></h3>
-      <div class="score-line">Revenue-capture health: <b id="r-score"></b>/100 (grade <span id="r-grade"></span>) · estimated recoverable revenue: <b id="r-leak" style="font-size:18px"></b>/mo</div>
-      <div id="r-checks"></div>
-      <p class="rpt-note">The full report with your quote is on its way to your inbox — check spam if you don't see it in a couple of minutes. Estimates are modelled from a conservative baseline applied to your site's publicly visible gaps; they're directional, not a promise of results.</p>
-      <div class="rpt-cta">Your quote — with the founding-customer rate — is in the email. Founding rate: <b>$994</b> full install + 2 months managed, then <b>$497</b>/month. Locked for the life of your agreement; first 3 customers only.</div>
+    <div class="cta-box">
+      <h2>See what your business is leaving on the table</h2>
+      <p>Free 15-minute presence audit &mdash; we test your own phone line live, check your Map Pack rank, and ask the AI engines who the best local [your trade] is. You keep the written findings either way.</p>
+      <a class="btn" href="#audit" id="primary-cta">Book My Free 15-Minute Audit &rarr;</a>
+      <div class="btn-sub">Rather talk now? <a href="tel:+13073444410">307-344-4410</a> &mdash; 24/7. Yes, it's an AI desk. Obviously.</div>
     </div>
   </header>
 
-  <section class="proof">
+  <section class="pain">
+    <h2>The four silent leaks</h2>
+    <p class="sub">Each one is money you already earned and never collected.</p>
+    <div class="pain-grid">
+      <div class="pain-card"><b>&#128222; Missed calls</b><p>Most callers who hit voicemail never call back &mdash; they dial the next shop on Google.</p></div>
+      <div class="pain-card"><b>&#128506; Invisible on the Map</b><p>Not in the Map Pack top 3? The phone rings at your competitor's shop.</p></div>
+      <div class="pain-card"><b>&#129302; Ghosted by AI</b><p>Customers ask ChatGPT &amp; Gemini for &ldquo;the best roofer near me.&rdquo; AI recommends whoever has the content to be findable &mdash; often not you.</p></div>
+      <div class="pain-card"><b>&#11088; Review drought</b><p>Happy customers forget. Your rival with 200 reviews at 4.9 stars wins the click before price comes up.</p></div>
+    </div>
+    <p class="pain-note">A page with a single clear call-to-action converts <b>13.5%</b> vs 10.5% for cluttered ones (Unbounce, 41,000 pages). That's why this page asks for one thing.</p>
+  </section>
+
+  <section>
+    <div class="kicker">The Bilts System</div>
+    <h2>Four fixes. One monthly service.</h2>
+    <p class="sub">Installed in days. Run for you. Reported in plain English every month.</p>
+    <div class="fix-grid">
+      <div class="fix"><span class="num">01</span><b>24/7 AI Front Desk</b><p>Answers every call in your company's voice, books the job, texts you a summary. After-hours callers become booked jobs, not voicemails.</p></div>
+      <div class="fix"><span class="num">02</span><b>Google Business Profile Engine</b><p>Weekly posts, Q&amp;A seeding, photo cadence, citation cleanup, review responses &mdash; the exact activity that moves you into the Map Pack top 3.</p></div>
+      <div class="fix"><span class="num">03</span><b>AI-Search Visibility</b><p>Service pages built the way ChatGPT, Gemini and Perplexity read the web &mdash; so when someone asks AI for a local pro, it says your name.</p></div>
+      <div class="fix"><span class="num">04</span><b>Review &amp; Referral Machine</b><p>Automatic review requests after every completed job, wired to a referral ask. Your rating climbs while you sleep.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Proof, not promises</div>
+    <h2>The numbers behind the system</h2>
     <div class="stats">
       <div class="stat"><b>$80K</b><span>one client, one summer</span></div>
       <div class="stat"><b>90%</b><span>of local searches are mobile</span></div>
-      <div class="stat"><b>24/7</b><span>AI answers every call</span></div>
+      <div class="stat"><b>24/7</b><span>every call answered</span></div>
+      <div class="stat"><b>7 days</b><span>live-or-refund guarantee</span></div>
     </div>
-    <div class="card">
-      <p class="quote">"Don Taylor needed his client intake off his kitchen table. We built it, we run it, and it works — case study published on our site, warts and all."</p>
-      <div class="who">Brian Sinclair<span>Owner, VES — Veteran Ecosystem Stewardship · 25 years enterprise IT &amp; operations</span></div>
-    </div>
-  </section>
-
-  <section class="model">
-    <h3>How it works — three steps, we do the heavy lifting</h3>
-    <div class="steps">
-      <div class="step"><b>1 · Free report</b>60 seconds. We check what customers find when they search for you — and what they don't. Instant, by email.</div>
-      <div class="step"><b>2 · We install</b>AI phone answering, a one-page site that converts, and your name playing where your neighbors already watch. Usually live in days, not months.</div>
-      <div class="step"><b>3 · We run it</b>Flat monthly service. Calls answered, jobs booked, presence managed. You just show up and do the work.</div>
+    <div class="quote-card">
+      <p class="quote">"Don Taylor needed his client intake off his kitchen table. We built it, we run it, and it works &mdash; case study published, warts and all. That's the standard every Bilts install is held to."</p>
+      <div class="who">Brian Sinclair<span>Founder, Bilts &middot; 25 years enterprise IT &amp; operations &middot; Veteran-owned &middot; Delmar, MD</span></div>
     </div>
   </section>
 
-  <!-- POST-PAYMENT: agreement + onboarding (arrives here from Stripe checkout) -->
-  <section id="welcome">
-    <h2>Welcome aboard — two quick steps and you're live</h2>
-    <p class="wsub">Payment received. Sign the service agreement and give us your onboarding details — then book your kickoff call. Your countersigned agreement lands in your inbox within one business day.</p>
-
-    <h4 style="color:var(--gold-bright);font-size:15px;margin-bottom:8px">Step 1 — Sign your service agreement</h4>
-    <div class="agreement" id="agreement-text" tabindex="0">
-      <p><b>VES AMG — Service Agreement (Never Miss a Job)</b><br>VES Administrative Management Group LLC · EIN 41-3833294 · 30 N Gould St Ste 12564, Sheridan, WY 82801</p>
-      <h4>1. What VES installs and manages</h4>
-      <ol>
-        <li><b>AI Phone Answering</b> — an AI receptionist on the Client's business line: answers calls 24/7, captures caller name/number/need, books appointments per the Client's calendar rules, sends an SMS confirmation, and forwards emergencies per the Client's escalation list. AI callers identify as an assistant.</li>
-        <li><b>Missed-Call Text-Back</b> — every missed call gets a text: "Sorry we missed you — how can we help?" Replies route to the AI assistant.</li>
-        <li><b>One-Page Website</b> — a conversion-focused single page: services, service area, tap-to-call, review links, and the booking flow.</li>
-        <li><b>Review Engine</b> — after each completed job, one polite review request to the Client's customer. Never gated on rating, never incentivized; negative feedback routes privately to the Client first.</li>
-        <li><b>Managed Operation</b> — monitoring, adjustments, and a plain-English monthly report (calls answered, texts sent, jobs booked, reviews gained).</li>
-      </ol>
-      <h4>2. What we need from the Client</h4>
-      <ul><li>Call forwarding activation on the business line (VES walks the Client through it), calendar rules, the escalation contact, and a list of services/pricing the AI may quote. VES never quotes a price the Client hasn't approved in writing.</li></ul>
-      <h4>3. Term</h4>
-      <ul><li>Month-to-month after the Start period. The Start fee covers the full install plus months 1–2 of managed service.</li></ul>
-      <h4>4. Fees — founding-customer rate</h4>
-      <table style="width:100%;border-collapse:collapse;margin:6px 0">
-        <tr><td style="border:1px solid #e2e8f0;padding:6px 10px">Start — full install + months 1–2</td><td style="border:1px solid #e2e8f0;padding:6px 10px">$994 one time (paid)</td></tr>
-        <tr><td style="border:1px solid #e2e8f0;padding:6px 10px">Managed monthly (begins month 3)</td><td style="border:1px solid #e2e8f0;padding:6px 10px">$497 per month</td></tr>
-      </table>
-      <p>This agreement was signed under VES's founding-rate launch offer (first 3 customers). These fees are locked for the life of this agreement; published rate increases never apply to this customer.</p>
-      <h4>5. Payment &amp; cancellation</h4>
-      <p>Payments are processed by Stripe; card details never reach VES staff. The Managed Monthly may be cancelled by either party with 30 days' written notice, no penalty. On cancellation VES stops managing the system and returns forwarding to the Client's full control; the Client keeps its Google profile and review history.</p>
-      <h4>6. Guarantee</h4>
-      <p>If, within 7 days of go-live, the system fails to perform its core functions (answers calls, sends the text-back, captures and delivers a booking) and VES cannot demonstrate a working flow within 3 business days of the Client's notice, the Client may cancel and VES refunds the Start fee in full. The guarantee covers the documented functioning of the system itself — not outcomes (revenue, job volume).</p>
-      <h4>7. Liability &amp; governing law</h4>
-      <p>VES's total liability is limited to fees paid in the 60 days before a claim. Neither party is liable for indirect damages. Governed by the laws of the State of Wyoming; disputes handled in Sheridan County, Wyoming.</p>
+  <section class="machine">
+    <div class="kicker">While you work, we publish</div>
+    <h2>The visibility machine that compounds</h2>
+    <p class="sub">Ranking in 2026 is two games &mdash; Google's Map Pack and AI answers. We run both every week. You never touch a keyboard.</p>
+    <div class="machine-grid">
+      <div class="m-card"><b>&#128196; Weekly local pages</b><p>Service + city posts (&ldquo;emergency water heater repair in [your town]&rdquo;) &mdash; nets the Map Pack and AI engines both read.</p></div>
+      <div class="m-card"><b>&#127909; Your own YouTube channel</b><p>Short videos built from your job photos and services. YouTube is the #2 search engine and the fastest AI-citation source &mdash; we run it for you.</p></div>
+      <div class="m-card"><b>&#128266; Your audio hook</b><p>The Mike Stewart play: a short branded hook with your trade + city in the first 5 seconds &mdash; on your videos, hold line, and ads. People skipping is the point; they still hear the name.</p></div>
+      <div class="m-card"><b>&#128202; Plain-English monthly report</b><p>Calls answered, jobs booked, rank movement, reviews earned, AI mentions found. One page. Cancel anytime.</p></div>
     </div>
-    <label class="agree-check"><input type="checkbox" id="agree-check"> I have read the agreement above and agree to its terms on behalf of my business.</label>
-    <form id="sign-form" novalidate>
-      <div class="sig-grid">
-        <div><label for="s-name">Full legal name</label><input id="s-name" type="text" required></div>
-        <div><label for="s-title">Title</label><input id="s-title" type="text" placeholder="Owner" required></div>
-        <div><label for="s-biz">Business name</label><input id="s-biz" type="text" required></div>
-        <div><label for="s-email">Email</label><input id="s-email" type="email" required></div>
-        <div><label for="s-date">Date</label><input id="s-date" type="text" readonly></div>
-        <div><label for="s-sig">Type your full name to sign</label><input id="s-sig" type="text" placeholder="Your full name" required></div>
+  </section>
+
+  <section id="offers">
+    <div class="kicker">Straight pricing</div>
+    <h2>Pick your starting point</h2>
+    <p class="sub">Founding rates &mdash; the first 3 customers per trade lock these for the life of the agreement.</p>
+    <div class="offers">
+      <div class="offer">
+        <h3>Local Visibility Audit</h3>
+        <div class="price">$499</div>
+        <div class="per">one-time</div>
+        <ul>
+          <li>Live call test of your business line</li>
+          <li>Map Pack rank vs. your top 3 rivals</li>
+          <li>What ChatGPT says when asked about you</li>
+          <li>GBP + reviews + citations scorecard</li>
+          <li>Prioritized fix list + 30-min walkthrough</li>
+        </ul>
+        <a class="btn" href="#audit">Start With the Audit</a>
       </div>
-      <h4 style="color:var(--gold-bright);font-size:15px;margin:16px 0 8px">Step 2 — Onboarding details</h4>
-      <div class="details-grid">
-        <div><label for="o-phone">Business phone line to forward</label><input id="o-phone" type="tel" required></div>
-        <div><label for="o-hours">Business hours</label><input id="o-hours" type="text" placeholder="Mon–Fri 8–5" required></div>
-        <div><label for="o-services">Top services you sell</label><input id="o-services" type="text" placeholder="Repairs, installs, inspections…" required></div>
-        <div><label for="o-area">Service area</label><input id="o-area" type="text" placeholder="Towns / counties" required></div>
+      <div class="offer featured">
+        <span class="badge">MOST POPULAR</span>
+        <h3>Front Desk Start</h3>
+        <div class="price">$994</div>
+        <div class="per">covers install + first 2 months &middot; then $497/mo</div>
+        <ul>
+          <li>24/7 AI front desk in your company's voice</li>
+          <li>Live in 7 days or you don't pay</li>
+          <li>Missed-call text-back wired in</li>
+          <li>Google Business Profile optimization</li>
+          <li>Monthly plain-English report</li>
+        </ul>
+        <a class="btn" href="#audit">Book My Audit</a>
       </div>
-      <button class="btn wbtn" type="submit">Sign &amp; Submit Onboarding →</button>
-    </form>
-    <div class="form-msg" id="sign-msg"></div>
-    <div class="wsuccess" id="sign-success">
-      ✅ Signed and received. Your countersigned agreement arrives within one business day.<br><br>
-      <b>Last step:</b> <a href="https://vesmg.com/book" style="color:var(--gold-bright);font-weight:bold">book your onboarding call →</a> (or call 307-344-4410). We walk the forwarding setup together — go-live is usually days, not weeks.
+      <div class="offer">
+        <h3>Full Growth Stack</h3>
+        <div class="price">$1,494</div>
+        <div class="per">covers install + first 2 months &middot; then $994/mo</div>
+        <ul>
+          <li>Everything in Front Desk Start</li>
+          <li>Weekly local pages + your YouTube channel</li>
+          <li>Custom audio hook for your trade</li>
+          <li>AI-search visibility program</li>
+          <li>Review &amp; referral machine</li>
+        </ul>
+        <a class="btn" href="#audit">Book My Audit</a>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:16px;font-size:13.5px">Every plan starts with the free audit. If the numbers don't make sense, we say so &mdash; and you keep the report.</p>
+  </section>
+
+  <section id="audit">
+    <div class="kicker">The free audit &mdash; what you get</div>
+    <h2>15 minutes. Real findings. Yours to keep.</h2>
+    <div class="audit">
+      <p style="color:var(--text-soft);font-size:14.5px">We run the exact checks we sell &mdash; on your business, live, on the call:</p>
+      <ul>
+        <li>We call your business line &mdash; does it ring, does a human answer?</li>
+        <li>Your Map Pack position vs. the top 3 in your trade + city</li>
+        <li>What ChatGPT and Gemini say when asked to recommend a local [your trade]</li>
+        <li>Your review count, rating, and response rate vs. the market</li>
+        <li>A written one-page fix list &mdash; yours whether you hire us or not</li>
+      </ul>
+      <a class="btn" href="https://vesmg.com/book" id="audit-cta">Book My Free Audit Now &rarr;</a>
+      <div class="btn-sub">or call <a href="tel:+13073444410">307-344-4410</a> &mdash; the AI desk answers 24/7 (naturally)</div>
     </div>
   </section>
 
   <footer>
-    Book your free audit · <a href="tel:+13073444410">307-344-4410</a><br><br>
-    VES Administrative Management Group LLC · 30 N Gould St Ste 12564, Sheridan, WY 82801 · Delmar, MD · <a href="https://vesmg.com">vesmg.com</a>
+    <p><a href="https://vesmg.com/book">Book your free audit</a> &middot; <a href="tel:+13073444410">307-344-4410</a></p>
+    <p style="margin-top:10px">Bilts &middot; Veteran Ecosystem Stewardship &middot; Delmar, MD &middot; <a href="https://vesmg.com">vesmg.com</a></p>
   </footer>
+
 </div>
-
-<script>
-(function(){
-  var API_SCAN = 'https://vesmg.com/api/revenue-scan';
-  var API_CONTACT = 'https://vesmg.com/api/contact';
-  var START_LINK = 'https://buy.stripe.com/6oUbJ16Nsgt2cqvdzDgYU32';
-
-  // Post-payment welcome (Stripe redirects here with ?welcome=1)
-  if (new URLSearchParams(location.search).get('welcome')) {
-    var w = document.getElementById('welcome');
-    w.style.display = 'block';
-    w.scrollIntoView({behavior:'smooth'});
-    document.getElementById('s-date').value = new Date().toISOString().slice(0,10);
-  }
-
-  function showMsg(id, text, isErr){
-    var el = document.getElementById(id);
-    el.textContent = text;
-    el.className = 'form-msg ' + (isErr ? 'err' : '');
-  }
-
-  // ONE conversion: the free report
-  document.getElementById('scan-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    var f = e.target;
-    var payload = {
-      source: 'bilts',
-      name: f.name.value.trim(),
-      business: f.business.value.trim(),
-      url: f.url.value.trim(),
-      email: f.email.value.trim()
-    };
-    if(!payload.name || !payload.business || !payload.url || !payload.email){
-      showMsg('scan-msg','Fill in every field — your report goes to your email.', true); return;
-    }
-    var btn = document.getElementById('scan-btn');
-    btn.disabled = true; btn.textContent = 'Scanning your business…';
-    fetch(API_SCAN, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
-    .then(function(res){
-      btn.disabled = false; btn.textContent = 'Get My Free Report →';
-      if(!res.ok || !res.j.success){
-        showMsg('scan-msg', (res.j && res.j.error) || 'Scan failed — try again, or call 307-344-4410.', true);
-        return;
-      }
-      var r = res.j.result;
-      showMsg('scan-msg','');
-      var icon = {pass:'✅',warn:'⚠️',fail:'❌'};
-      var html = '';
-      (r.checks||[]).forEach(function(c){
-        html += '<div class="check"><span class="st">'+(icon[c.status]||'❔')+'</span><b>'+c.label+'</b> — '+c.finding+
-                (c.monthlyLeak>0 ? '<span class="leak">$'+c.monthlyLeak.toLocaleString()+'/mo</span>' : '')+'</div>';
-      });
-      document.getElementById('r-url').textContent = r.url.replace(/^https?:\/\//,'');
-      document.getElementById('r-score').textContent = r.score;
-      document.getElementById('r-grade').textContent = r.grade;
-      document.getElementById('r-leak').textContent = '$'+(r.estimatedMonthlyLeak||0).toLocaleString();
-      document.getElementById('r-checks').innerHTML = html;
-      document.getElementById('report').style.display = 'block';
-      document.getElementById('report').scrollIntoView({behavior:'smooth'});
-    })
-    .catch(function(){
-      btn.disabled = false; btn.textContent = 'Get My Free Report →';
-      showMsg('scan-msg','Network error — try again, or call 307-344-4410.', true);
-    });
-  });
-
-  // Post-payment: signature + onboarding -> /api/contact (durable record)
-  document.getElementById('sign-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!document.getElementById('agree-check').checked){
-      showMsg('sign-msg','Check the agreement box to sign.', true); return;
-    }
-    var s = document.getElementById('s-sig').value.trim();
-    var sName = document.getElementById('s-name').value.trim();
-    if(!s || s.toLowerCase() !== sName.toLowerCase()){
-      showMsg('sign-msg','Your typed signature must match your full legal name.', true); return;
-    }
-    var msg = [
-      'SERVICE AGREEMENT SIGNED via bilts.org post-payment onboarding.',
-      'Agreement: VES AMG Service Agreement (Never Miss a Job) — founding rate $994 start + $497/mo from month 3, fees locked for life of agreement.',
-      'Signed by: ' + sName + ' (' + document.getElementById('s-title').value.trim() + '), ' + document.getElementById('s-biz').value.trim(),
-      'Signature (typed): ' + s,
-      'Signed at (UTC): ' + new Date().toISOString(),
-      'Email: ' + document.getElementById('s-email').value.trim(),
-      '',
-      'ONBOARDING DETAILS:',
-      'Business phone to forward: ' + document.getElementById('o-phone').value.trim(),
-      'Hours: ' + document.getElementById('o-hours').value.trim(),
-      'Top services: ' + document.getElementById('o-services').value.trim(),
-      'Service area: ' + document.getElementById('o-area').value.trim()
-    ].join('\n');
-    var btn = e.target.querySelector('button');
-    btn.disabled = true; btn.textContent = 'Submitting…';
-    fetch(API_CONTACT, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        name: sName,
-        email: document.getElementById('s-email').value.trim(),
-        phone: document.getElementById('o-phone').value.trim(),
-        organization: document.getElementById('s-biz').value.trim(),
-        productInterest: 'front-desk-start',
-        subject: 'Signed service agreement + onboarding — ' + document.getElementById('s-biz').value.trim(),
-        message: msg,
-        sourcePage: 'bilts.org/?welcome=1'
-      })
-    }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
-    .then(function(res){
-      if(res.ok && res.j.success){
-        document.getElementById('sign-form').style.display = 'none';
-        var suc = document.getElementById('sign-success');
-        suc.style.display = 'block'; suc.scrollIntoView({behavior:'smooth'});
-      } else {
-        btn.disabled = false; btn.textContent = 'Sign & Submit Onboarding →';
-        showMsg('sign-msg','Submission failed — email your details to brian.sinclair@vesmg.com or call 307-344-4410 and we will finish your onboarding manually.', true);
-      }
-    })
-    .catch(function(){
-      btn.disabled = false; btn.textContent = 'Sign & Submit Onboarding →';
-      showMsg('sign-msg','Network error — call 307-344-4410 and we will finish your onboarding manually.', true);
-    });
-  });
-})();
-</script>
 </body>
 </html>
