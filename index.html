@@ -80,6 +80,27 @@ h1 .gold{color:var(--gold-bright)}
 .audit li:before{content:"\2192";position:absolute;left:0;color:var(--gold-bright)}
 footer{padding:28px 0 40px;text-align:center;font-size:12.5px;color:var(--text-soft);border-top:1px solid rgba(157,188,216,.12)}
 footer a{color:var(--gold-bright);text-decoration:none}
+/* WELCOME (post-payment onboarding — ADR-0017) */
+#welcome{display:none;max-width:720px;margin:0 auto;background:var(--navy-panel);border:1px solid rgba(201,169,97,.5);border-radius:16px;padding:30px 28px;text-align:left}
+#welcome h2{color:var(--gold-bright);font-size:clamp(21px,3vw,27px);margin-bottom:6px;text-align:left}
+#welcome .wsub{color:var(--text-soft);font-size:14.5px;margin-bottom:18px}
+.wform{display:grid;gap:12px;text-align:left}
+.wform input{width:100%;background:#0b1a2c;border:1px solid rgba(157,188,216,.35);border-radius:10px;color:var(--text);padding:12px 14px;font-size:15px;font-family:inherit}
+.wform input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.wform label{font-size:12px;color:var(--text-soft);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.sig-grid,.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.sig-grid,.details-grid{grid-template-columns:1fr}.cta-box{padding:30px 18px}}
+.agreement{background:var(--cream);color:#1c1917;border-radius:10px;padding:16px;max-height:260px;overflow-y:auto;font-size:12.8px;line-height:1.5;margin-bottom:14px}
+.agreement h4{font-size:13px;margin:10px 0 4px;color:#091422;text-transform:uppercase;letter-spacing:.5px}
+.agreement p,.agreement li{margin:4px 0}
+.agreement ol,.agreement ul{padding-left:20px}
+.agree-check{font-size:13.5px;margin-bottom:14px;display:flex;gap:8px;align-items:flex-start}
+.agree-check input{width:auto;margin-top:3px}
+.wbtn{margin-top:16px;width:100%;text-align:center;border:none;cursor:pointer;font-family:inherit}
+.wsuccess{display:none;background:rgba(4,120,87,.18);border:1px solid #34d399;border-radius:10px;padding:16px;margin-top:14px;font-size:14.5px}
+.wsuccess a{color:var(--gold-bright);font-weight:bold}
+.form-msg{font-size:14px;margin-top:12px;display:none}
+.form-msg.err{color:#ff9d9d;display:block}
 </style>
 </head>
 <body>
@@ -256,6 +277,154 @@ footer a{color:var(--gold-bright);text-decoration:none}
     <p style="margin-top:10px">Bilts &middot; Veteran Ecosystem Stewardship &middot; Delmar, MD &middot; <a href="https://vesmg.com">vesmg.com</a></p>
   </footer>
 
+  <!-- POST-PAYMENT: agreement + onboarding. Stripe checkout redirects here
+       with ?welcome=1 (both payment links' after_completion). ADR-0017. -->
+  <section id="welcome" style="padding-top:36px">
+    <h2>Welcome aboard — two quick steps and you're live</h2>
+    <p class="wsub">Payment received. Sign the service agreement and give us your onboarding details — then book your kickoff call. Your countersigned agreement lands in your inbox within one business day.</p>
+
+    <h4 style="color:var(--gold-bright);font-size:15px;margin-bottom:8px">Step 1 — Sign your service agreement</h4>
+    <div class="agreement" id="agreement-text" tabindex="0">
+      <p><b>Bilts / VES AMG — Service Agreement (Never Miss a Job)</b><br>VES Administrative Management Group LLC · EIN 41-3833294 · 30 N Gould St Ste 12564, Sheridan, WY 82801</p>
+      <h4>1. What Bilts installs and manages</h4>
+      <ol>
+        <li><b>AI Phone Answering</b> — an AI receptionist on the Client's business line: answers calls 24/7 in the company's voice, captures caller name/number/need, books appointments per the Client's calendar rules, sends the caller an SMS confirmation, and forwards emergencies per the Client's escalation list. AI callers identify as an assistant.</li>
+        <li><b>Missed-Call Text-Back</b> — every missed call gets a text: "Sorry we missed you — how can we help?" Replies route to the AI assistant.</li>
+        <li><b>Google Business Profile Engine</b> — weekly posts, Q&amp;A seeding, photo cadence, citation cleanup, and review responses on the Client's profile.</li>
+        <li><b>One-Page Website</b> — a conversion-focused single page: services, service area, tap-to-call, review links, and the booking flow.</li>
+        <li><b>Review &amp; Referral Machine</b> — after each completed job, one polite review request to the Client's customer. Never gated on rating, never incentivized; negative feedback routes privately to the Client first.</li>
+        <li><b>Managed Operation</b> — monitoring, adjustments, and a plain-English monthly report (calls answered, texts sent, jobs booked, rank movement, reviews gained).</li>
+      </ol>
+      <h4>2. What we need from the Client</h4>
+      <ul><li>Call forwarding activation on the business line (Bilts walks the Client through it), calendar rules, the escalation contact, and a list of services/pricing the AI may quote. Bilts never quotes a price the Client hasn't approved in writing.</li></ul>
+      <h4>3. Term</h4>
+      <ul><li>Month-to-month after the Start period. The Start fee covers the full install plus months 1–2 of managed service.</li></ul>
+      <h4>4. Fees — founding-customer rate</h4>
+      <table style="width:100%;border-collapse:collapse;margin:6px 0">
+        <tr><td style="border:1px solid #e2e8f0;padding:6px 10px">Start — full install + months 1–2</td><td style="border:1px solid #e2e8f0;padding:6px 10px">$994 one time (paid)</td></tr>
+        <tr><td style="border:1px solid #e2e8f0;padding:6px 10px">Managed monthly (begins month 3)</td><td style="border:1px solid #e2e8f0;padding:6px 10px">$497 per month</td></tr>
+      </table>
+      <p>This agreement was signed under the founding-rate launch offer (first 3 customers per trade). These fees are locked for the life of this agreement; published rate increases never apply to this customer.</p>
+      <h4>5. Payment &amp; cancellation</h4>
+      <p>Payments are processed by Stripe; card details never reach Bilts staff. The Managed Monthly may be cancelled by either party with 30 days' written notice, no penalty. On cancellation Bilts stops managing the system and returns forwarding to the Client's full control; the Client keeps its Google profile and review history.</p>
+      <h4>6. Guarantee</h4>
+      <p>If, within 7 days of go-live, the system fails to perform its core functions (answers calls, sends the text-back, captures and delivers a booking) and Bilts cannot demonstrate a working flow within 3 business days of the Client's notice, the Client may cancel and the Start fee is refunded in full. The guarantee covers the documented functioning of the system itself — not outcomes (revenue, job volume, traffic).</p>
+      <h4>7. Liability &amp; governing law</h4>
+      <p>Bilts's total liability is limited to fees paid in the 60 days before a claim. Neither party is liable for indirect damages. Governed by the laws of the State of Wyoming; disputes handled in Sheridan County, Wyoming. The +30% traffic promise, where purchased, is administered per its page terms (measured on the Client's own verified analytics, 90-day rolling window).</p>
+    </div>
+    <label class="agree-check"><input type="checkbox" id="agree-check"> I have read the agreement above and agree to its terms on behalf of my business.</label>
+    <form id="sign-form" class="wform" novalidate>
+      <div class="sig-grid">
+        <div><label for="s-name">Full legal name</label><input id="s-name" type="text" required></div>
+        <div><label for="s-title">Title</label><input id="s-title" type="text" placeholder="Owner" required></div>
+        <div><label for="s-biz">Business name</label><input id="s-biz" type="text" required></div>
+        <div><label for="s-email">Email</label><input id="s-email" type="email" required></div>
+        <div><label for="s-date">Date</label><input id="s-date" type="text" readonly></div>
+        <div><label for="s-sig">Type your full name to sign</label><input id="s-sig" type="text" placeholder="Your full name" required></div>
+      </div>
+      <h4 style="color:var(--gold-bright);font-size:15px;margin:16px 0 8px">Step 2 — Onboarding details</h4>
+      <div class="details-grid">
+        <div><label for="o-phone">Business phone line to forward</label><input id="o-phone" type="tel" required></div>
+        <div><label for="o-hours">Business hours</label><input id="o-hours" type="text" placeholder="Mon–Fri 8–5" required></div>
+        <div><label for="o-services">Top services you sell</label><input id="o-services" type="text" placeholder="Repairs, installs, inspections…" required></div>
+        <div><label for="o-area">Service area</label><input id="o-area" type="text" placeholder="Towns / counties" required></div>
+      </div>
+      <button class="btn wbtn" type="submit" id="sign-btn">Sign &amp; Submit Onboarding &rarr;</button>
+    </form>
+    <div class="form-msg" id="sign-msg"></div>
+    <div class="wsuccess" id="sign-success">
+      &#9989; Signed and received. Your countersigned agreement arrives within one business day.<br><br>
+      <b>Last step:</b> <a href="https://vesmg.com/book">book your onboarding call &rarr;</a> (or call 307-344-4410). We walk the forwarding setup together — go-live is usually days, not weeks.
+    </div>
+  </section>
+
 </div>
+
+<script>
+(function(){
+  var API_CONTACT = 'https://vesmg.com/api/contact';
+
+  // Post-payment welcome (Stripe redirects here with ?welcome=1)
+  if (new URLSearchParams(location.search).get('welcome')) {
+    var w = document.getElementById('welcome');
+    w.style.display = 'block';
+    document.getElementById('s-date').value = new Date().toISOString().slice(0,10);
+    setTimeout(function(){ w.scrollIntoView({behavior:'smooth'}); }, 150);
+  }
+
+  function showMsg(id, text, isErr){
+    var el = document.getElementById(id);
+    el.textContent = text;
+    el.className = 'form-msg ' + (isErr ? 'err' : '');
+  }
+
+  // Signature + onboarding -> /api/contact (durable server-side record:
+  // CRM note + owner-notification email), then book onboarding call.
+  document.getElementById('sign-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!document.getElementById('agree-check').checked){
+      showMsg('sign-msg','Check the agreement box to sign.', true); return;
+    }
+    var s = document.getElementById('s-sig').value.trim();
+    var sName = document.getElementById('s-name').value.trim();
+    if(!s || s.toLowerCase() !== sName.toLowerCase()){
+      showMsg('sign-msg','Your typed signature must match your full legal name.', true); return;
+    }
+    var oPhone = document.getElementById('o-phone').value.trim();
+    var oHours = document.getElementById('o-hours').value.trim();
+    var oServices = document.getElementById('o-services').value.trim();
+    var oArea = document.getElementById('o-area').value.trim();
+    var sBiz = document.getElementById('s-biz').value.trim();
+    var sEmail = document.getElementById('s-email').value.trim();
+    if(!sName || !sBiz || !sEmail || !oPhone || !oHours || !oServices || !oArea){
+      showMsg('sign-msg','Fill in every field.', true); return;
+    }
+    var msg = [
+      'SERVICE AGREEMENT SIGNED via bilts.org post-payment onboarding.',
+      'Agreement: Bilts / VES AMG Service Agreement (Never Miss a Job) — founding rate $994 start + $497/mo from month 3, fees locked for life of agreement.',
+      'Signed by: ' + sName + ' (' + document.getElementById('s-title').value.trim() + '), ' + sBiz,
+      'Signature (typed): ' + s,
+      'Signed at (UTC): ' + new Date().toISOString(),
+      'Email: ' + sEmail,
+      '',
+      'ONBOARDING DETAILS:',
+      'Business phone to forward: ' + oPhone,
+      'Hours: ' + oHours,
+      'Top services: ' + oServices,
+      'Service area: ' + oArea
+    ].join('\n');
+    var btn = document.getElementById('sign-btn');
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    fetch(API_CONTACT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        name: sName,
+        email: sEmail,
+        phone: oPhone,
+        organization: sBiz,
+        productInterest: 'front-desk-start',
+        subject: 'Signed service agreement + onboarding — ' + sBiz,
+        message: msg,
+        sourcePage: 'bilts.org/?welcome=1'
+      })
+    }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      if(res.ok && res.j.success){
+        document.getElementById('sign-form').style.display = 'none';
+        var suc = document.getElementById('sign-success');
+        suc.style.display = 'block'; suc.scrollIntoView({behavior:'smooth'});
+      } else {
+        btn.disabled = false; btn.textContent = 'Sign & Submit Onboarding →';
+        showMsg('sign-msg','Submission failed — email your details to brian.sinclair@vesmg.com or call 307-344-4410 and we will finish your onboarding manually.', true);
+      }
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = 'Sign & Submit Onboarding →';
+      showMsg('sign-msg','Network error — call 307-344-4410 and we will finish your onboarding manually.', true);
+    });
+  });
+})();
+</script>
 </body>
 </html>
