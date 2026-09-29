@@ -118,8 +118,8 @@ footer a{color:var(--gold-bright);text-decoration:none}
     </div>
     <div class="cta-box">
       <h2>See what your business is leaving on the table</h2>
-      <p>Free 15-minute presence audit &mdash; we test your own phone line live, check your Map Pack rank, and ask the AI engines who the best local [your trade] is. You keep the written findings either way.</p>
-      <a class="btn" href="#audit" id="primary-cta">Book My Free 15-Minute Audit &rarr;</a>
+      <p>Your audit is free and instant &mdash; enter your business below and get your presence report on-screen in seconds: how your website captures (or loses) customers, where you rank, and what AI says about you. No call required unless you want one.</p>
+      <a class="btn" href="#get-report" id="primary-cta">Get My Free Audit &rarr;</a>
       <div class="btn-sub">Rather talk now? <a href="tel:+13073444410">307-344-4410</a> &mdash; 24/7. Yes, it's an AI desk. Obviously.</div>
     </div>
   </header>
@@ -220,7 +220,7 @@ footer a{color:var(--gold-bright);text-decoration:none}
           <li>GBP + reviews + citations scorecard</li>
           <li>Prioritized fix list + 30-min walkthrough &mdash; yours to keep</li>
         </ul>
-        <a class="btn" href="#audit">Claim My Free Audit</a>
+        <a class="btn" href="#get-report">Run My Free Audit &rarr;</a>
       </div>
       <div class="offer featured">
         <span class="badge">MOST POPULAR</span>
@@ -235,7 +235,7 @@ footer a{color:var(--gold-bright);text-decoration:none}
           <li>Monthly plain-English report</li>
           <li><b style="color:var(--cream)">+30% traffic promise</b> &mdash; miss it, the month is free</li>
         </ul>
-        <a class="btn" href="#audit">Book My Audit</a>
+        <a class="btn" href="#get-report">Run My Free Audit &rarr;</a>
       </div>
       <div class="offer">
         <span class="badge">FREE — OUR GIVE-BACK</span>
@@ -250,26 +250,33 @@ footer a{color:var(--gold-bright);text-decoration:none}
           <li>Review &amp; referral machine</li>
           <li>Paid plans not required &mdash; the machine runs free</li>
         </ul>
-        <a class="btn" href="#audit">Start Free</a>
+        <a class="btn" href="#get-report">Start Free &rarr;</a>
       </div>
     </div>
     <p class="sub" style="margin-top:16px;font-size:13.5px"><b style="color:var(--gold-bright)">Why free?</b> We built this machine for our own business and it works. Giving it away is how we give back &mdash; every business gets the audit and the visibility machine at no cost, ever. The only thing we charge for is the 24/7 front desk that answers your phones, because that one runs on live minutes and staff. If the numbers don't make sense, we say so &mdash; and you keep everything we build.</p>
   </section>
 
   <section id="audit">
-    <div class="kicker">The free audit &mdash; what you get</div>
-    <h2>15 minutes. Real findings. Yours to keep.</h2>
-    <div class="audit">
-      <p style="color:var(--text-soft);font-size:14.5px">We run the exact checks we sell &mdash; on your business, live, on the call:</p>
-      <ul>
-        <li>We call your business line &mdash; does it ring, does a human answer?</li>
-        <li>Your Map Pack position vs. the top 3 in your trade + city</li>
-        <li>What ChatGPT and Gemini say when asked to recommend a local [your trade]</li>
-        <li>Your review count, rating, and response rate vs. the market</li>
-        <li>A written one-page fix list &mdash; yours whether you hire us or not</li>
-      </ul>
-      <a class="btn" href="https://vesmg.com/book" id="audit-cta">Book My Free Audit Now &rarr;</a>
-      <div class="btn-sub">or call <a href="tel:+13073444410">307-344-4410</a> &mdash; the AI desk answers 24/7 (naturally)</div>
+    <div class="kicker">The free audit &mdash; instant</div>
+    <h2>Your report, on screen, in seconds</h2>
+    <div class="audit" id="get-report">
+      <p style="color:var(--text-soft);font-size:14.5px;margin-bottom:14px">Enter your details &mdash; the report renders right here and a copy with your quote lands in your email.</p>
+      <form id="scan-form" novalidate style="max-width:460px;margin:0 auto;text-align:left">
+        <div style="margin-bottom:10px"><label for="f-name" style="font-size:12px;color:var(--text-soft);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required style="width:100%;background:#0b1a2c;border:1px solid rgba(157,188,216,.35);border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;font-family:inherit"></div>
+        <div style="margin-bottom:10px"><label for="f-business" style="font-size:12px;color:var(--text-soft);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Business name</label><input id="f-business" name="business" type="text" autocomplete="organization" required style="width:100%;background:#0b1a2c;border:1px solid rgba(157,188,216,.35);border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;font-family:inherit"></div>
+        <div style="margin-bottom:10px"><label for="f-url" style="font-size:12px;color:var(--text-soft);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Website</label><input id="f-url" name="url" type="text" inputmode="url" placeholder="yourbusiness.com" required style="width:100%;background:#0b1a2c;border:1px solid rgba(157,188,216,.35);border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;font-family:inherit"></div>
+        <div style="margin-bottom:14px"><label for="f-email" style="font-size:12px;color:var(--text-soft);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">Email &mdash; your report goes here too</label><input id="f-email" name="email" type="email" autocomplete="email" required style="width:100%;background:#0b1a2c;border:1px solid rgba(157,188,216,.35);border-radius:10px;color:#fff;padding:12px 14px;font-size:15px;font-family:inherit"></div>
+        <button class="btn" type="submit" id="scan-btn" style="width:100%;display:block;border:none;cursor:pointer;font-family:inherit">Get My Free Report &rarr;</button>
+      </form>
+      <div id="scan-msg" style="font-size:14px;margin-top:12px;display:none;color:#ff9d9d"></div>
+      <div id="report" style="display:none;margin-top:26px;text-align:left">
+        <h3 style="color:var(--gold-bright);font-size:19px;margin-bottom:6px">Your instant report &mdash; <span id="r-url"></span></h3>
+        <div style="font-size:15px;margin-bottom:12px">Revenue-capture health: <b id="r-score" style="font-size:24px;color:var(--gold-bright)"></b>/100 (grade <span id="r-grade"></span>) &middot; estimated recoverable revenue: <b id="r-leak" style="font-size:17px;color:var(--gold-bright)"></b>/mo</div>
+        <div id="r-checks"></div>
+        <p style="font-size:12px;color:var(--text-soft);margin-top:12px">The full report with your quote is on its way to your inbox. Estimates are modelled from a conservative baseline applied to your site's publicly visible gaps &mdash; directional, not a promise of results.</p>
+        <div style="margin-top:14px;font-size:14px;background:rgba(201,169,97,.12);border:1px solid rgba(201,169,97,.4);border-radius:10px;padding:14px">Your quote &mdash; with the founding-customer rate &mdash; is in the email. Founding rate: <b>$994</b> full install + 2 months managed, then <b>$497</b>/month. Locked for the life of your agreement; first 3 customers only. Every managed plan carries the <b>+30% traffic promise</b> &mdash; miss it, the month is free.</div>
+      </div>
+      <div class="btn-sub" style="margin-top:14px">Prefer a human? <a href="tel:+13073444410">307-344-4410</a> &mdash; 24/7.</div>
     </div>
   </section>
 
@@ -423,6 +430,76 @@ footer a{color:var(--gold-bright);text-decoration:none}
     .catch(function(){
       btn.disabled = false; btn.textContent = 'Sign & Submit Onboarding →';
       showMsg('sign-msg','Network error — call 307-344-4410 and we will finish your onboarding manually.', true);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var API_SCAN = 'https://vesmg.com/api/revenue-scan';
+  var API_CONTACT = 'https://vesmg.com/api/contact';
+  var START_LINK = 'https://buy.stripe.com/6oUbJ16Nsgt2cqvdzDgYU32';
+
+  // Post-payment welcome (Stripe redirects here with ?welcome=1)
+  if (new URLSearchParams(location.search).get('welcome')) {
+    var w = document.getElementById('welcome');
+    w.style.display = 'block';
+    w.scrollIntoView({behavior:'smooth'});
+    document.getElementById('s-date').value = new Date().toISOString().slice(0,10);
+  }
+
+  function showMsg(id, text, isErr){
+    var el = document.getElementById(id);
+    el.textContent = text;
+    el.className = 'form-msg ' + (isErr ? 'err' : '');
+  }
+
+  // ONE conversion: the free report
+  document.getElementById('scan-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target;
+    var payload = {
+      source: 'bilts',
+      name: f.name.value.trim(),
+      business: f.business.value.trim(),
+      url: f.url.value.trim(),
+      email: f.email.value.trim()
+    };
+    if(!payload.name || !payload.business || !payload.url || !payload.email){
+      showMsg('scan-msg','Fill in every field — your report goes to your email.', true); return;
+    }
+    var btn = document.getElementById('scan-btn');
+    btn.disabled = true; btn.textContent = 'Scanning your business…';
+    fetch(API_SCAN, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+    .then(function(res){
+      btn.disabled = false; btn.textContent = 'Get My Free Report →';
+      if(!res.ok || !res.j.success){
+        showMsg('scan-msg', (res.j && res.j.error) || 'Scan failed — try again, or call 307-344-4410.', true);
+        return;
+      }
+      var r = res.j.result;
+      showMsg('scan-msg','');
+      var icon = {pass:'✅',warn:'⚠️',fail:'❌'};
+      var html = '';
+      (r.checks||[]).forEach(function(c){
+        html += '<div class="check"><span class="st">'+(icon[c.status]||'❔')+'</span><b>'+c.label+'</b> — '+c.finding+
+                (c.monthlyLeak>0 ? '<span class="leak">$'+c.monthlyLeak.toLocaleString()+'/mo</span>' : '')+'</div>';
+      });
+      document.getElementById('r-url').textContent = r.url.replace(/^https?:\/\//,'');
+      document.getElementById('r-score').textContent = r.score;
+      document.getElementById('r-grade').textContent = r.grade;
+      document.getElementById('r-leak').textContent = '$'+(r.estimatedMonthlyLeak||0).toLocaleString();
+      document.getElementById('r-checks').innerHTML = html;
+      document.getElementById('report').style.display = 'block';
+      document.getElementById('report').scrollIntoView({behavior:'smooth'});
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = 'Get My Free Report →';
+      showMsg('scan-msg','Network error — try again, or call 307-344-4410.', true);
     });
   });
 })();
