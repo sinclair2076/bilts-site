@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VES — Your Local Business, AI-Powered | Book Your Free 15-Minute Audit</title>
+<meta name="description" content="We put an AI front desk and marketing engine on local service businesses. One call. We handle everything. Book your free 15-minute presence audit.">
+<!-- bilts.org — the Stewart model: one page, ONE CTA, proof over jargon.
+     Design tokens per vesmg-design-tokens (navy/gold house style).
+     DEPLOY: vestos.org first (bench), cut over to bilts.org on proof. -->
+<style>
+  :root{
+    --navy-deep:#091422; --navy-panel:#0f1f33; --navy-mid:#1e3a5f;
+    --gold:#c9a961; --gold-bright:#e0bc7f; --gold-hover:#a68446;
+    --text:#ffffff; --text-soft:#9dbcd8; --cream:#fdf9f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--navy-deep);color:var(--text);line-height:1.6}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  /* HERO — the one screen that does the job */
+  header{padding:64px 0 40px;text-align:center}
+  .flag{font-size:13px;letter-spacing:3px;color:var(--text-soft);text-transform:uppercase}
+  h1{font-size:clamp(30px,5.4vw,52px);line-height:1.12;margin:18px 0 16px;font-weight:800}
+  h1 .gold{color:var(--gold-bright)}
+  .sub{font-size:clamp(16px,2.4vw,20px);color:var(--text-soft);max-width:640px;margin:0 auto 32px}
+  /* THE CTA — single button, impossible to miss */
+  .cta-box{background:linear-gradient(135deg,var(--navy-panel),var(--navy-mid));border:1px solid rgba(201,169,97,.45);border-radius:16px;padding:40px 32px;max-width:620px;margin:0 auto;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+  .cta-box h2{font-size:clamp(20px,3vw,26px);margin-bottom:8px}
+  .cta-box p{color:var(--text-soft);margin-bottom:24px;font-size:15px}
+  .btn{display:block;background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#1a1408;font-size:20px;font-weight:800;text-decoration:none;padding:18px 32px;border-radius:12px;transition:.18s;letter-spacing:.3px}
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,169,97,.35)}
+  .btn-sub{font-size:13px;color:var(--text-soft);margin-top:14px}
+  /* PROOF — the honey jar. Real client, real numbers, cited. */
+  .proof{padding:56px 0;text-align:center}
+  .proof .card{background:var(--navy-panel);border:1px solid rgba(157,188,216,.18);border-radius:14px;padding:32px;max-width:620px;margin:0 auto;text-align:left}
+  .quote{font-size:17px;font-style:italic;color:var(--cream)}
+  .who{margin-top:16px;font-size:14px;color:var(--gold-bright);font-weight:700}
+  .who span{display:block;color:var(--text-soft);font-weight:400;font-size:13px}
+  .stats{display:flex;gap:24px;justify-content:center;margin:36px 0 8px;flex-wrap:wrap}
+  .stat b{display:block;font-size:clamp(26px,4.4vw,40px);color:var(--gold-bright)}
+  .stat span{font-size:12.5px;color:var(--text-soft);text-transform:uppercase;letter-spacing:1.5px}
+  /* THE MODEL — what the monthly service actually is, in plain words */
+  .model{padding:8px 0 56px}
+  .model h3{text-align:center;font-size:22px;margin-bottom:24px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:820px;margin:0 auto}
+  .step{background:var(--navy-panel);border:1px solid rgba(157,188,216,.14);border-radius:12px;padding:20px}
+  .step b{color:var(--gold-bright);display:block;margin-bottom:6px;font-size:15px}
+  .step p{font-size:13.5px;color:var(--text-soft)}
+  footer{padding:32px 0 44px;text-align:center;font-size:12.5px;color:var(--text-soft);border-top:1px solid rgba(157,188,216,.12)}
+  footer a{color:var(--gold-bright);text-decoration:none}
+  @media(max-width:560px){.cta-box{padding:32px 20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="flag">Serving Those Who Served · Delmar, Maryland</div>
+    <h1>Your Business Should Answer <span class="gold">Every Call.</span><br>Now It Can — Without Hiring Anyone.</h1>
+    <p class="sub">We install an AI front desk and marketing engine on local service businesses — plumbers, roofers, HVAC, pest control, senior care. It answers the phone, books the job, and keeps your name in front of the neighborhood. You do the work you're already great at.</p>
+
+    <div class="cta-box">
+      <h2>Find out what your business is leaving on the table</h2>
+      <p>Free 15-minute presence audit. We look, we show you, you decide. No obligation, no jargon.</p>
+      <!-- ONE CTA — the only primary action on the page -->
+      <a class="btn" href="https://vesmg.com/audit" id="primary-cta">Book My Free 15-Minute Audit →</a>
+      <div class="btn-sub">Prefer to talk first? Call <a href="tel:+13073444410" style="color:var(--gold-bright)">307-344-4410</a></div>
+    </div>
+  </header>
+
+  <section class="proof">
+    <div class="stats">
+      <div class="stat"><b>$80K</b><span>one client, one summer</span></div>
+      <div class="stat"><b>90%</b><span>of local searches are mobile</span></div>
+      <div class="stat"><b>24/7</b><span>AI answers every call</span></div>
+    </div>
+    <div class="card">
+      <p class="quote">"Don Taylor needed his client intake off his kitchen table. We built it, we run it, and it works — case study published on our site, warts and all."</p>
+      <div class="who">Brian Sinclair<span>Owner, VES — Veteran Ecosystem Stewardship · 25 years enterprise IT &amp; operations</span></div>
+    </div>
+  </section>
+
+  <section class="model">
+    <h3>How it works — three steps, we do the heavy lifting</h3>
+    <div class="steps">
+      <div class="step"><b>1 · Free audit</b>15 minutes. We check what customers find when they search for you — and what they don't.</div>
+      <div class="step"><b>2 · We install</b>AI phone answering, a one-page site that converts, and your name playing where your neighbors already watch. Usually live in days, not months.</div>
+      <div class="step"><b>3 · We run it</b>Flat monthly service. Calls answered, jobs booked, presence managed. You just show up and do the work.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p><a href="https://vesmg.com/audit" id="footer-cta">Book your free audit</a> · <a href="tel:+13073444410">307-344-4410</a></p>
+    <p style="margin-top:10px">Veteran Ecosystem Stewardship (VES) · Delmar, MD · <a href="https://vesmg.com">vesmg.com</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
